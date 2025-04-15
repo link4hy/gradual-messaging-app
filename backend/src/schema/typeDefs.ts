@@ -5,6 +5,7 @@ const typeDefs = gql`
     id: ID!
     text: String!
     userId: String!
+    to: String!
     createdAt: String!
     quotedMessageId: String
     mentionedUserIds: [String]
@@ -15,7 +16,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    sendMessage(text: String!, userId: String!, quotedMessageId: String, mentionedUserIds: [String]): Message!
+    sendMessage(text: String!, userId: String!, to: String!, quotedMessageId: String, mentionedUserIds: [String]): Message!
   }
 `;
 

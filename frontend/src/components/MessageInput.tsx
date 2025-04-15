@@ -10,19 +10,24 @@ const SEND_MESSAGE = gql`
   mutation SendMessage(
     $text: String!, 
     $userId: String!, 
+    $to: String!, 
     $quotedMessageId: String, 
     $mentionedUserIds: [String]
   ) {
     sendMessage(
       text: $text, 
       userId: $userId, 
+      to: $to,
       quotedMessageId: $quotedMessageId, 
       mentionedUserIds: $mentionedUserIds
     ) {
       id
       text
       userId
+      to
       createdAt
+      quotedMessageId
+      mentionedUserIds
     }
   }
 `;
@@ -30,16 +35,17 @@ const SEND_MESSAGE = gql`
 
 interface MessageInputProps {
   userId: string;
+  selectedUser: string;
 }
 
-const MessageInput: React.FC<MessageInputProps> = ({ userId }) => {
+const MessageInput: React.FC<MessageInputProps> = ({ userId, selectedUser }) => {
   const [text, setText] = useState('');
   const [sendMessageMutation, { loading, error }] = useMutation(SEND_MESSAGE);
 
 
   const sendMessage = async () => {
     if (text.trim()) {
-      const messageData = { text, userId, createdAt: new Date().toISOString() };
+      const messageData = { text, userId, to: selectedUser, createdAt: new Date().toISOString() };
       socket.emit('sendMessage', messageData);
       setText('');
 
@@ -54,6 +60,7 @@ const MessageInput: React.FC<MessageInputProps> = ({ userId }) => {
           variables: {
             text,
             userId,
+            to: selectedUser, // The recipient of the message
             quotedMessageId: null,         // Pass null if not used
             mentionedUserIds: []           // Pass an empty array if no users are mentioned
           }

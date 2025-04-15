@@ -30,6 +30,16 @@
     margin: 50px 20px;
 }
 
+.sidebar-item:hover {
+    background-color: #f5f5f5;
+  }
+  
+  /* Highlight selected user */
+  .sidebar-item.active {
+    background-color: #e6f7ff;
+  }
+  
+
 
 .sidebar-left {
     background-color: #0c0e14;

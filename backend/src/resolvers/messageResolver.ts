@@ -3,19 +3,17 @@ import Message, { IMessage } from '../models/Message';
 const resolvers = {
   Query: {
     messages: async (): Promise<IMessage[]> => {
-      console.log('Fetching messages from the database');
       return await Message.find().sort({ createdAt: 1 });
     },
   },
   Mutation: {
     sendMessage: async (
       _: any,
-      { text, userId, quotedMessageId, mentionedUserIds }: 
-      { text: string; userId: string; quotedMessageId?: string; mentionedUserIds?: string[]; }
+      { text, userId, to, quotedMessageId, mentionedUserIds }:
+        { text: string; userId: string; to: string; quotedMessageId?: string; mentionedUserIds?: string[]; }
     ): Promise<IMessage> => {
-      const newMessage = new Message({ text, userId, quotedMessageId, mentionedUserIds });
+      const newMessage = new Message({ text, userId, to, quotedMessageId, mentionedUserIds });
       await newMessage.save();
-      console.log('New message saved:', newMessage);
       // Optionally, you could emit a socket event for real-time update here.
       return newMessage;
     },

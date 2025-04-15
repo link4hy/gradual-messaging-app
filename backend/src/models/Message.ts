@@ -5,6 +5,7 @@ export interface IMessage extends Document {
   userId: string;
   createdAt: Date;
   // Optional: quote reply, mention details etc.
+  to: string;
   quotedMessageId?: string;
   mentionedUserIds?: string[];
 }
@@ -13,6 +14,7 @@ const MessageSchema = new Schema<IMessage>({
   text: { type: String, required: true },
   userId: { type: String, required: true },
   createdAt: { type: Date, default: Date.now },
+  to: { type: String, required: true },
   quotedMessageId: { type: String, default: null },
   mentionedUserIds: { type: [String], default: [] },
 });

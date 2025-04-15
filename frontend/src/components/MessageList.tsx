@@ -9,6 +9,7 @@ const GET_MESSAGES = gql`
       id
       text
       userId
+      to
       createdAt
     }
   }
@@ -18,19 +19,27 @@ interface Message {
   id: string;
   text: string;
   userId: string;
+  to: string;
   createdAt: string;
 }
 
-const MessageList: React.FC = () => {
+
+interface MessageListProps {
+  selectedUser: string;
+}
+
+const MessageList: React.FC<MessageListProps> = ({ selectedUser }) => {
   const { data, loading, error } = useQuery(GET_MESSAGES);
   const [messages, setMessages] = useState<Message[]>([]);
 
   useEffect(() => {
     if (data) setMessages(data.messages);
+
   }, [data]);
 
   useEffect(() => {
     socket.on('newMessage', (message: Message) => {
+      console.log('New message received:', message);
       setMessages((prev) => [...prev, message]);
     });
 
@@ -42,9 +51,12 @@ const MessageList: React.FC = () => {
   if (loading) return <p>Loading messages...</p>;
   if (error) return <p>Error loading messages</p>;
 
+  const filteredMessages = messages.filter((msg) => msg.userId === selectedUser || msg.to === selectedUser);
+
+
   return (
     <ul className="message-list">
-      {messages.map((msg) => (
+      {filteredMessages.map((msg) => (
         <li
           key={msg.id}
           // Conditionally add "highlight" class if the message's userId equals "User123"

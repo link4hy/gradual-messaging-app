@@ -1,0 +1,129 @@
+/* Sidebar.css */
+.sidebar {
+    width: 320px;
+    /* min-height: 100vh; */
+    padding-top: 50px;
+    min-height: calc(100vh - 50px) !important;
+
+
+
+    float: left;
+}
+
+.sidebar h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.sidebar-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.sidebar-item {
+    padding: 8px;
+    color: #555;
+    padding: 5px;
+    /* text-align: center; */
+    margin: 50px 20px;
+}
+
+
+.sidebar-left {
+    background-color: #0c0e14;
+    width: 190px;
+}
+
+.sidebar-right {
+    background-color: #1d1c21;
+}
+
+li img {
+    width: 50px;
+    display: inline-block;
+    float: left;
+    margin-top: -15px;
+    border-radius: 93px;
+    margin-right: 13px;
+}
+
+.sidebar-item-text {
+    display: inline-block;
+    /* margin-left: 10px; */
+    color: #fff;
+}
+
+
+
+.input-container {
+    /* border: 1px solid #CCC; */
+    /* background: white; */
+    text-align: center;
+}
+
+.input-container .wrapper {
+    position: relative;
+    /* background-color: #1d1c21; */
+    border: 1px solid #353535;
+    font: 13px/18px "lucida grande", tahoma, verdana, arial, sans-serif;
+    /* background: white; */
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -o-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    border-radius: 3px;
+    -moz-transition-property: border-color;
+    -webkit-transition-property: border-color;
+    -o-transition-property: border-color;
+    transition-property: border-color;
+    -moz-transition-duration: 0.1s;
+    -webkit-transition-duration: 0.1s;
+    -o-transition-duration: 0.1s;
+    transition-duration: 0.1s;
+    -moz-transition-timing-function: linear;
+    -webkit-transition-timing-function: linear;
+    -o-transition-timing-function: linear;
+    transition-timing-function: linear;
+    -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.2);
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.input-container input {
+    background-color: #1d1c21;
+    border-width: 0;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    outline: none;
+    height: 47px;
+}
+
+
+.search-input {
+    width: 96%;
+}
+
+.search-icon {
+    color: #FFF;
+    position: absolute;
+    top: 12px;
+    left: 9px;
+}
+
+.time {
+    float: right;
+}
+
+.sidebar-right li img {
+    margin-right: 0px;
+
+}
+
+.user-info {
+
+    margin-left: 60px;
+
+}

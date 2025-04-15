@@ -1,0 +1,30 @@
+/* App.css */
+.app-container {
+  /* display: flex; */
+}
+
+.main-content {
+  flex: 1;
+  /* padding: 20px; */
+  background-color: #26252c;
+  padding-top: 50px;
+  min-height: calc(100vh - 50px) !important;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.chatWindow {
+  /* border: 1px solid #dddddd; */
+  /* height: 400px; */
+  height: calc(100vh - 110px) !important;
+  overflow-y: auto;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  text-align: center;
+}

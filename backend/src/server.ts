@@ -7,16 +7,31 @@ import typeDefs from './schema/typeDefs';
 import resolvers from './resolvers/messageResolver';
 import initSocket from './socket';
 
+import { MongoMemoryServer } from 'mongodb-memory-server';
+
+
 const PORT = process.env.PORT || 4000;
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/chat-app';
+// const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/chat-app';
 
 (async () => {
   try {
+    // Start the in-memory MongoDB instance for testing
+    const mongoServer = await MongoMemoryServer.create();
+    const MONGO_URI = mongoServer.getUri();
+
     await mongoose.connect(MONGO_URI, {
+      // @ts-ignore: these options are handled by the underlying driver
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
     });
-    console.log('MongoDB connected');
+    console.log('Connected to in-memory MongoDB');
+
+
+    // await mongoose.connect(MONGO_URI, {
+    //   useNewUrlParser: true,
+    //   useUnifiedTopology: true
+    // });
+    // console.log('MongoDB connected');
 
     const app = express() as any;;
 

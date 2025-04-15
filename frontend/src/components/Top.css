@@ -1,0 +1,35 @@
+.top-container {
+  height: 50px;
+  background-color: #0c0e14;
+  color: #FFF;
+  position: fixed;
+  width: 100%;
+}
+
+img {
+  position: relative;
+  top: 2px;
+}
+
+.top-right {
+  float: right;
+  padding: 14px;
+}
+
+.top-right-item {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.time-zone-text {
+  margin-left: 15px;
+  vertical-align: top;
+  margin-top: 2px;
+  display: inline-block;
+}
+
+.top-search {
+  position: relative;
+  top: -6px;
+  height: 22px;
+}
